@@ -30,32 +30,11 @@ sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai
 
 # Modify banner
 if [ "${repo}" = "lede" ]; then
-  cat >package/base-files/files/etc/banner <<EOF
-     _________
-    /        /\      _    ___ ___  ___
-   /  LE    /  \    | |  | __|   \| __|
-  /    DE  /    \   | |__| _|| |) | _|
- /________/  LE  \  |____|___|___/|___|        Lede-${owner} By GXNAS
- \        \   DE /
-  \    LE  \    /  -------------------------------------------
-   \  DE    \  /    %D %V, %C
-    \________\/    -------------------------------------------
-
-EOF
-  fi
+  cp lede.banner package/base-files/files/etc/banner
 else
-  cat >package/base-files/files/etc/banner <<EOF
- ██████╗ ██████╗ ███████╗███╗   ██╗██╗    ██╗██████╗ ████████╗
-██╔═══██╗██╔══██╗██╔════╝████╗  ██║██║    ██║██╔══██╗╚══██╔══╝
-██║   ██║██████╔╝█████╗  ██╔██╗ ██║██║ █╗ ██║██████╔╝   ██║   
-██║   ██║██╔═══╝ ██╔══╝  ██║╚██╗██║██║███╗██║██╔══██╗   ██║   
-╚██████╔╝██║     ███████╗██║ ╚████║╚███╔███╔╝██║  ██║   ██║   
- ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═══╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   
-  -------------------------------------------
-  		%D %V, %C      OpenWrt-${owner} By GXNAS
-  -------------------------------------------
-EOF
+  cp openwrt.banner package/base-files/files/etc/banner
 fi
+
 
 # lede    ==> ${defaultsettings}
 # openwrt ==> feeds/ing/default-settings

@@ -74,11 +74,10 @@ jobs:
         run: |
           sudo mkdir -p /mnt/openwrt
 
+          cp -r ./build.sh ${GITHUB_WORKSPACE}/
           cd /mnt/openwrt
-          cp -r ../build.sh ${GITHUB_WORKSPACE}/
-
           echo "${GITHUB_WORKSPACE}的内容："
-          ls -alR ${GITHUB_WORKSPACE}
+          ls -alR ${GITHUB_WORKSPACE}/
           echo "========================="
           
           sudo ${GITHUB_WORKSPACE}/build.sh "${GITHUB_WORKSPACE}/${{ matrix.config }}"

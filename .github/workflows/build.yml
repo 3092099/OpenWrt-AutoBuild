@@ -75,6 +75,8 @@ jobs:
           sudo mkdir -p /mnt/openwrt
 
           cd /mnt/openwrt
+
+          echo""
           
           sudo ${GITHUB_WORKSPACE}/build.sh "${GITHUB_WORKSPACE}/${{ matrix.config }}"
 
@@ -94,3 +96,19 @@ jobs:
         with:
           tag_name: ${{ env.release }}
           files: /mnt/openwrt/*.zip
+
+      - name: Telegram notification upload success
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ♨️ 【${{ matrix.config }}】项目编译完成 ♨️
+    
+      - name: Push notification upload success
+        uses: xhnmt/pushplus-action@main
+        with:
+          token: ${{ secrets.PUSH_PLUS_TOKEN }}
+          title: "${{ matrix.config }} 项目编译完成"
+          content: |
+            ♨️ 【${{ matrix.config }}】项目编译完成 ♨️

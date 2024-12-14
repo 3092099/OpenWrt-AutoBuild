@@ -76,16 +76,10 @@ jobs:
 
           cd /mnt/openwrt
           
-          echo "${GITHUB_WORKSPACE}的内容："
-          ls -alR ${GITHUB_WORKSPACE}/
-          echo "========================="
-          echo "build.sh的内容："
-          cat ${GITHUB_WORKSPACE}/build.sh
-          echo "========================="
-          
-          bash ${GITHUB_WORKSPACE}/build.sh "${GITHUB_WORKSPACE}/${{ matrix.config }}"
+          sudo bash ${GITHUB_WORKSPACE}/build.sh "${GITHUB_WORKSPACE}/${{ matrix.config }}"
 
           ls -al
+          
           if [ $(ls *.img.gz | wc -l) -le 0 ]; then
             echo "No firmware found"
             exit 1

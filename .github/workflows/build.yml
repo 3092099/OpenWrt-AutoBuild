@@ -74,7 +74,6 @@ jobs:
         run: |
           sudo mkdir -p /mnt/openwrt
 
-          cp -r ./build.sh ${GITHUB_WORKSPACE}/
           cd /mnt/openwrt
           echo "${GITHUB_WORKSPACE}的内容："
           ls -alR ${GITHUB_WORKSPACE}/

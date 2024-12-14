@@ -76,7 +76,9 @@ jobs:
 
           cd /mnt/openwrt
 
-          echo""
+          echo "${GITHUB_WORKSPACE}的内容："
+          ls -alR ${GITHUB_WORKSPACE}
+          echo "========================="
           
           sudo ${GITHUB_WORKSPACE}/build.sh "${GITHUB_WORKSPACE}/${{ matrix.config }}"
 

@@ -93,7 +93,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          tag_name: ${{ env.release }}
+          tag_name: OpenWrt-AutoBuild
           files: /mnt/openwrt/*.zip
 
       - name: Telegram notification upload success

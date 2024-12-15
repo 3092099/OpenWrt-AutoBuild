@@ -8,19 +8,14 @@ echo "OpenWrt DIY script"
 echo "repo: ${repo}; owner: ${owner};"
 
 # Modify default IP
-case "${owner}" in
-    "Full-Router"|"Main-Router")
-        sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/files/bin/config_generate
-        ;;
-    "Side-Routes"|"Simplified-Router"|"Test-Router")
-        sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/files/bin/config_generate
-        ;;
-    *)
-        # Handle unexpected values or errors
-        echo "Invalid owner: ${owner}"
-        exit 1
-        ;;
-esac
+if [ "${CONFIG_OWNER}" = "Full-Router" ]; then
+  sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/files/bin/config_generate
+elif [ "${CONFIG_OWNER}" = "Main-Router" ]; then
+  sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/files/bin/config_generate
+else
+  sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/files/bin/config_generate
+  exit 1
+fi
 
 # Modify hostname
 sed -i 's/OpenWrt/OpenWrt-GXNAS/g' package/base-files/files/bin/config_generate

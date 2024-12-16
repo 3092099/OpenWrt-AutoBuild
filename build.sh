@@ -100,7 +100,9 @@ ls -al
 
 rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img
 
-mv -f *.img* "${WORKSPACE}"
+rm -f *.img.gz
+gzip -f *.img
+mv -f *.img.gz "${WORKSPACE}"
 
 popd # bin/targets/*/*
 

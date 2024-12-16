@@ -82,7 +82,7 @@ jobs:
           ls -al
           echo "======================="
           
-          if [ $(ls *.img.gz | wc -l) -le 0 ]; then
+          if [ $(ls *.img* | wc -l) -le 0 ]; then
             echo "No firmware found"
             exit 1
           fi

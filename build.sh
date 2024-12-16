@@ -98,7 +98,7 @@ pushd bin/targets/*/*
 
 ls -al
 
-rm -rf packages *.buildinfo *.manifest *.bin sha256sums
+rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img
 
 mv -f *.img* "${WORKSPACE}"
 

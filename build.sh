@@ -102,7 +102,8 @@ rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img
 
 rm -f *.img.gz
 gzip -f *.img
-mv -f -- *.img.gz "${WORKSPACE}"
+
+mv -f *.img.gz "${WORKSPACE}"
 
 popd # bin/targets/*/*
 

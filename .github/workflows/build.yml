@@ -78,19 +78,11 @@ jobs:
           
           sudo bash ${GITHUB_WORKSPACE}/build.sh "${GITHUB_WORKSPACE}/${{ matrix.config }}"
 
-          echo "编译成功，当前文件夹有："
-          ls -al
-          echo "======================="
-          
           if [ $(ls *.img* | wc -l) -le 0 ]; then
-            echo "No firmware found"
+            echo "编译失败！"
             exit 1
           fi
 
-          cp openwrt-x86-64-generic-squashfs-combined.img.gz "${CONFIG_REPO}-${CONFIG_OWNER}-${build_date}-bios.img.gz"
-          cp openwrt-x86-64-generic-squashfs-combined.efi.img.gz "${CONFIG_REPO}-${CONFIG_OWNER}-${build_date}-uefi.img.gz"
-          rm -rf openwrt-x86-64-generic-squashfs-combined.img.gz
-          rm -rf openwrt-x86-64-generic-squashfs-combined.efi.img.gz
           sudo zip -q -r $(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')-${{ env.release }}.zip *.img.gz
 
       - name: Upload firmware to release

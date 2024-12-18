@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+build_date=$(TZ=Asia/Shanghai date "+%Y.%m.%d")
+
 if [ -z "${1}" ] || [ ! -f "${1}" ]; then
   echo "Usage: $0 <config file>"
   exit 1
@@ -105,7 +107,7 @@ echo "======================="
 echo "build_date的值是：${build_date}"
 echo "======================="
 
-rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img
+rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img profiles.json
 rm -f *.img.gz
 gzip -f *.img
 echo "整理文件后，当前文件夹有："
@@ -113,7 +115,7 @@ ls -al
 echo "======================="
 
 mv openwrt-x86-64-generic-squashfs-combined.img.gz "${CONFIG_REPO}"-"${CONFIG_OWNER}"-"${build_date}"-bios.img.gz
-mv openwrt-x86-64-generic-squashfs-combined.efi.img.gz "${CONFIG_REPO}"-"${CONFIG_OWNER}"-"${build_date}"-uefi.img.gz
+mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz "${CONFIG_REPO}"-"${CONFIG_OWNER}"-"${build_date}"-uefi.img.gz
 echo "文件名优化后，当前文件夹有："
 ls -al
 echo "======================="

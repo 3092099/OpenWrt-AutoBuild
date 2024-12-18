@@ -104,8 +104,8 @@ jobs:
             - ⚽ 固件名称：OpenWrt-AutoBuild
             - 🔴 固件大小：Kernel=32M，rootfs=968M
             - 💻 平台架构: x86-64
-            - 🌻 固件源码: ${{REPO_URL}}
-            - 💝 源码分支: ${{REPO_BRANCH}}
+            - 🌻 固件源码: https://github.com/coolsnowwolf/lede
+            - 💝 源码分支: master
             - 🚀 内核版本: 6.6
             - 🎈 Lcui版本：23.05
             - 🌐 默认地址：192.168.18.1
@@ -123,8 +123,8 @@ jobs:
              - ⚽ 固件名称：OpenWrt-AutoBuild
              - 🔴 固件大小：Kernel=32M，rootfs=968M
              - 💻 平台架构: x86-64
-             - 🌻 固件源码: ${{REPO_URL}}
-             - 💝 源码分支: ${{REPO_BRANCH}}
+             - 🌻 固件源码: https://github.com/coolsnowwolf/lede
+             - 💝 源码分支: master
              - 🚀 内核版本: 6.6
              - 🎈 Lcui版本：23.05
              - 🌐 默认地址：192.168.18.1

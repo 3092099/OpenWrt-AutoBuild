@@ -18,6 +18,13 @@ echo "======================="
 sed -i "/helloworld/d" feeds.conf.default
 sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package' feeds.conf.default
 
+# passwall
+rm -rf feeds/luci/applications/luci-app-passwall
+merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
+
+# passwall2
+merge_package main https://github.com/xiaorouji/openwrt-passwall2 package/custom luci-app-passwall2
+
 # Modify default IP
 if [ "${owner}" = "Full-Router" ]; then
   sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/luci2/bin/config_generate
@@ -58,6 +65,13 @@ fi
 # Modify hostname
 #sed -i 's/OpenWrt/OpenWrt-GXNAS/g' package/base-files/files/bin/config_generate
 
+echo "package/lean/autocore/files/x86/index.htm的内容是"
+cat package/lean/autocore/files/x86/index.htm
+echo "======================="
+echo "feeds/luci/modules/luci-base/po/zh-cn/base.po的内容是"
+cat feeds/luci/modules/luci-base/po/zh-cn/base.po
+echo "======================="
+
 # 修改主机名字，修改你喜欢的就行（不能纯数字或者使用中文）
 echo "修改主机名字前的zzz-default-settings的内容是"
 cat ${defaultsettings}/files/zzz-default-settings
@@ -90,7 +104,7 @@ defaultsettings=*/*/default-settings
 [ "${repo}" = "openwrt" ] && language=zh_cn || language=zh_Hans
 
 # Modify password to Null
-#sed -i '/CYXluq4wUazHjmCDBCqXF/d' ${defaultsettings}/files/zzz-default-settings
+sed -i '/CYXluq4wUazHjmCDBCqXF/d' ${defaultsettings}/files/zzz-default-settings
 
 # Modify the version number
 echo "修改编译时间前的zzz-default-settings的内容是"

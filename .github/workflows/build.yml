@@ -100,7 +100,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ♨️ 【${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}】项目编译完成 ♨️
+            ♨️ 【https://github.com/3092099/OpenWrt-AutoBuild】项目编译完成 ♨️
             - ⚽ 固件名称：${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}
             - 🔴 固件大小：Kernel=32M，rootfs=968M
             - 💻 平台架构: x86-64
@@ -119,7 +119,7 @@ jobs:
           token: ${{ secrets.PUSH_PLUS_TOKEN }}
           title: "${{ matrix.config }} 项目编译完成"
           content: |
-             ♨️ 【${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}】项目编译完成 ♨️
+             ♨️ 【https://github.com/3092099/OpenWrt-AutoBuild】项目编译完成 ♨️
              - ⚽ 固件名称：${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}
              - 🔴 固件大小：Kernel=32M，rootfs=968M
              - 💻 平台架构: x86-64

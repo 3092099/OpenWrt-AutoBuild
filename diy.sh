@@ -8,6 +8,10 @@ build_date=$(TZ=Asia/Shanghai date "+%Y.%m.%d")
 
 echo "当前编译的源代码来自：${repo}，固件型号是：${owner};"
 
+# Add a feed source
+sed -i "/helloworld/d" feeds.conf.default
+sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package' feeds.conf.default
+
 # Modify default IP
 if [ "${owner}" = "Full-Router" ]; then
   sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/files/bin/config_generate

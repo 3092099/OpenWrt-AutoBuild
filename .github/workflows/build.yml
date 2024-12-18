@@ -100,17 +100,17 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ♨️ 【${CONFIG_REPO}-${CONFIG_OWNER}-${CONFIG_NAME}】项目编译完成 ♨️
-            - ⚽ 固件名称：${CONFIG_REPO}-${CONFIG_OWNER}-${CONFIG_NAME}
+            ♨️ 【${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}】项目编译完成 ♨️
+            - ⚽ 固件名称：${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}
             - 🔴 固件大小：Kernel=32M，rootfs=968M
             - 💻 平台架构: x86-64
-            - 🌻 固件源码: ${REPO_URL}
-            - 💝 源码分支: ${REPO_BRANCH}
-            - 🚀 内核版本: ${{ env.latest_release }}
+            - 🌻 固件源码: ${{REPO_URL}}
+            - 💝 源码分支: ${{REPO_BRANCH}}
+            - 🚀 内核版本: ${{env.latest_release}}
             - 🎈 Lcui版本：23.05
             - 🌐 默认地址：192.168.18.1
             - 🔑 默认密码：无密码
-            - 🧊 更新时间：${{ env.release }}
+            - 🧊 更新时间：${{env.release}}
             https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild
     
       - name: Push notification upload success
@@ -119,15 +119,15 @@ jobs:
           token: ${{ secrets.PUSH_PLUS_TOKEN }}
           title: "${{ matrix.config }} 项目编译完成"
           content: |
-             ♨️ 【${CONFIG_REPO}-${CONFIG_OWNER}-${CONFIG_NAME}】项目编译完成 ♨️
-             - ⚽ 固件名称：${CONFIG_REPO}-${CONFIG_OWNER}-${CONFIG_NAME}
+             ♨️ 【${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}】项目编译完成 ♨️
+             - ⚽ 固件名称：${{CONFIG_REPO}}-${{CONFIG_OWNER}}-${{CONFIG_NAME}}
              - 🔴 固件大小：Kernel=32M，rootfs=968M
              - 💻 平台架构: x86-64
-             - 🌻 固件源码: ${REPO_URL}
-             - 💝 源码分支: ${REPO_BRANCH}
-             - 🚀 内核版本: ${{ env.latest_release }}
+             - 🌻 固件源码: ${{REPO_URL}}
+             - 💝 源码分支: ${{REPO_BRANCH}}
+             - 🚀 内核版本: ${{env.latest_release}}
              - 🎈 Lcui版本：23.05
              - 🌐 默认地址：192.168.18.1
              - 🔑 默认密码：无密码
-             - 🧊 更新时间：${{ env.release }}
+             - 🧊 更新时间：${{env.release}}
              https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild

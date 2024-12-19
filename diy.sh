@@ -35,6 +35,11 @@ else
   sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/luci2/bin/config_generate
 fi
 
+echo "feeds/luci/文件夹有："
+ls -Ahl feeds/luci/
+echo "======================="
+
+
 # Modify footer.htm&footer_login.htm
 if [ "${owner}" = "Full-Router" ]; then
   sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2410_x64_全功能版 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm

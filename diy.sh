@@ -20,10 +20,10 @@ sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package' feeds.conf.
 
 # passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # passwall2
-merge_package main https://github.com/xiaorouji/openwrt-passwall2 package/custom luci-app-passwall2
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
 
 # Modify default IP
 if [ "${owner}" = "Full-Router" ]; then

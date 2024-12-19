@@ -52,6 +52,7 @@ pushd "${CONFIG_REPO}"
 git pull
 
 sed -i "/src-git ing /d; 1 i src-git ing https://github.com/wjz304/openwrt-packages;${CONFIG_REPO}" feeds.conf.default
+sed -i "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" feeds.conf.default
 
 ./scripts/feeds install -a
 ./scripts/feeds uninstall $(grep Package ./feeds/ing.index | awk -F': ' '{print $2}')

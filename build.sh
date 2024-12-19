@@ -22,14 +22,6 @@ fi
 CONFIG_REPO="${CONFIG_ARRAY[0]}"
 CONFIG_OWNER="${CONFIG_ARRAY[1]}"
 CONFIG_NAME="${CONFIG_ARRAY[2]}"
-echo "CONFIG_REPO的值是：${CONFIG_REPO}"
-echo "======================="
-echo "CONFIG_OWNER的值是：${CONFIG_OWNER}"
-echo "======================="
-echo "CONFIG_NAME的值是：${CONFIG_NAME}"
-echo "======================="
-echo "build_date的值是：${build_date}"
-echo "======================="
 
 if [ "${CONFIG_REPO}" = "openwrt" ]; then
   REPO_URL="https://github.com/openwrt/openwrt"
@@ -101,28 +93,12 @@ fi
 
 pushd bin/targets/*/*
 
-echo "编译成功，原始文件有："
-ls -al
-echo "CONFIG_REPO的值是：${CONFIG_REPO}"
-echo "======================="
-echo "CONFIG_OWNER的值是：${CONFIG_OWNER}"
-echo "======================="
-echo "build_date的值是：${build_date}"
-echo "======================="
-
 rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img profiles.json
 rm -f *.img.gz
 gzip -f *.img
-echo "整理文件后，当前文件夹有："
-ls -al
-echo "======================="
 
 mv openwrt-x86-64-generic-squashfs-combined.img.gz "${CONFIG_REPO}"-"${CONFIG_OWNER}"-"${build_date}"-bios.img.gz
 mv openwrt-x86-64-generic-squashfs-combined-efi.img.gz "${CONFIG_REPO}"-"${CONFIG_OWNER}"-"${build_date}"-uefi.img.gz
-echo "文件名优化后，当前文件夹有："
-ls -al
-echo "======================="
-
 mv -f *.img.gz "${WORKSPACE}"
 
 popd # bin/targets/*/*

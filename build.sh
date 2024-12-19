@@ -61,6 +61,10 @@ git pull
 
 sed -i "/src-git ing /d; 1 i src-git ing https://github.com/wjz304/openwrt-packages;${CONFIG_REPO}" feeds.conf.default
 
+echo "feeds/luci/themes/luci-theme-argon文件夹下有："
+ls -Ahl feeds/luci/themes/luci-theme-argon
+echo "======================="
+
 echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的内容是："
 cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
 echo "======================="

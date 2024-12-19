@@ -59,7 +59,7 @@ pushd "${CONFIG_REPO}"
 
 git pull
 
-sed -i "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" feeds.conf.default
+sed -i "/src-git ing /d; 1 i src-git ing https://github.com/wjz304/openwrt-packages;${CONFIG_REPO}" feeds.conf.default
 
 echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的内容是："
 cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm

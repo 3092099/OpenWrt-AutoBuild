@@ -6,6 +6,11 @@ repo=${1:-openwrt}
 owner=${2:-Test-Router}
 build_date=$(TZ=Asia/Shanghai date "+%Y.%m.%d")
 
+# lede    ==> ${defaultsettings}
+# openwrt ==> feeds/ing/default-settings
+defaultsettings=*/*/default-settings
+[ "${repo}" = "openwrt" ] && language=zh_cn || language=zh_Hans
+
 echo "当前编译的源代码来自：${repo}，固件型号是：${owner};"
 echo "repo的值是：${repo}"
 echo "======================="
@@ -29,13 +34,6 @@ elif [ "${owner}" = "Main-Router" ]; then
 else
   sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/luci2/bin/config_generate
 fi
-
-echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的内容是（修改前）："
-cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-echo "======================="
-echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的内容是（修改前）："
-cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-echo "======================="
 
 # Modify footer.htm&footer_login.htm
 if [ "${owner}" = "Full-Router" ]; then
@@ -72,22 +70,14 @@ echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的�
 cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
 echo "======================="
 
-
 # Modify hostname
 #sed -i 's/OpenWrt/OpenWrt-GXNAS/g' package/base-files/files/bin/config_generate
-
-echo "package/lean/autocore/files/x86/index.htm的内容是"
-cat package/lean/autocore/files/x86/index.htm
-echo "======================="
-echo "feeds/luci/modules/luci-base/po/zh-cn/base.po的内容是"
-cat feeds/luci/modules/luci-base/po/zh-cn/base.po
-echo "======================="
 
 # 修改主机名字，修改你喜欢的就行（不能纯数字或者使用中文）
 echo "修改主机名字前的zzz-default-settings的内容是"
 cat ${defaultsettings}/files/zzz-default-settings
 echo "======================="
-sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-GXNAS'" package/lean/default-settings/files/zzz-default-settings
+sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-GXNAS'" ${defaultsettings}/files/zzz-default-settings
 sed -i "s/hostname='.*'/hostname='OpenWrt-GXNAS'/g" ./package/base-files/files/bin/config_generate
 echo "修改主机名字后的zzz-default-settings的内容是"
 cat ${defaultsettings}/files/zzz-default-settings
@@ -108,11 +98,6 @@ cat >package/base-files/files/etc/banner <<EOF
         OpenWrt-2410-x64-${owner} Build GXNAS
 ---------------------------------------------------------------
 EOF
-
-# lede    ==> ${defaultsettings}
-# openwrt ==> feeds/ing/default-settings
-defaultsettings=*/*/default-settings
-[ "${repo}" = "openwrt" ] && language=zh_cn || language=zh_Hans
 
 # Modify password to Null
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' ${defaultsettings}/files/zzz-default-settings

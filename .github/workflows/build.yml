@@ -84,6 +84,15 @@ jobs:
           fi
 
           #sudo zip -q -r $(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')-${{ env.release }}.zip *.img.gz
+          echo "当前编译的源代码来自：${repo}，固件型号是：${owner};"
+          echo "repo的值是：${repo}"
+          echo "======================="
+          echo "owner的值是：${owner}"
+          echo "======================="
+          echo "build_date的值是：${build_date}"
+          echo "======================="
+          echo "自定义的值是：$(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')"
+          echo "======================="
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v2
@@ -100,8 +109,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ♨️ 【https://github.com/3092099/OpenWrt-AutoBuild】项目编译完成 ♨️
-            - ⚽ 固件名称：OpenWrt-AutoBuild
+            ♨️ 【$(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')】项目编译完成 ♨️
+            - ⚽ 固件名称：$(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')
             - 🔴 固件大小：Kernel=32M，rootfs=968M
             - 💻 平台架构: x86-64
             - 🌻 固件源码: https://github.com/coolsnowwolf/lede
@@ -119,8 +128,8 @@ jobs:
           token: ${{ secrets.PUSH_PLUS_TOKEN }}
           title: "${{ matrix.config }} 项目编译完成"
           content: |
-             ♨️ 【https://github.com/3092099/OpenWrt-AutoBuild】项目编译完成 ♨️
-             - ⚽ 固件名称：OpenWrt-AutoBuild
+             ♨️ 【$(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')】项目编译完成 ♨️
+             - ⚽ 固件名称：$(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')
              - 🔴 固件大小：Kernel=32M，rootfs=968M
              - 💻 平台架构: x86-64
              - 🌻 固件源码: https://github.com/coolsnowwolf/lede

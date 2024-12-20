@@ -35,46 +35,6 @@ else
   sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/luci2/bin/config_generate
 fi
 
-echo "feeds/luci/文件夹有："
-ls -Ahl feeds/luci/
-echo "======================="
-
-
-# Modify footer.htm&footer_login.htm
-if [ "${owner}" = "Full-Router" ]; then
-  sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2410_x64_全功能版 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2410_x64_全功能版 by GXNAS build @R$build_date|" feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-elif [ "${owner}" = "Main-Router" ]; then
-  sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2410_x64_主路由版 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2410_x64_主路由版 by GXNAS build @R$build_date|" feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-
-elif [ "${owner}" = "Side-Routes" ]; then
-  sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2410_x64_旁路由版 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2410_x64_旁路由版 by GXNAS build @R$build_date|" feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-elif [ "${owner}" = "Simplified-Router" ]; then
-  sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2410_x64_精简版 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2410_x64_精简版 by GXNAS build @R$build_date|" feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-else
-  sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2410_x64_测试版 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-  sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2410_x64_测试版 by GXNAS build @R$build_date|" feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-fi
-echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的内容是（修改后）："
-cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-echo "======================="
-echo "feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm的内容是（修改后）："
-cat feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
-echo "======================="
-
 # Modify hostname
 sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-GXNAS'" ${defaultsettings}/files/zzz-default-settings
 sed -i "s/hostname='.*'/hostname='OpenWrt-GXNAS'/g" ./package/base-files/files/bin/config_generate

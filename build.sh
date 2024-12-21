@@ -38,7 +38,6 @@ if [ ! -d "${CONFIG_REPO}" ]; then
   git clone --depth=1 -b "${REPO_BRANCH}" "${REPO_URL}" "${CONFIG_REPO}"
 fi
 
-# root.
 export FORCE_UNSAFE_CONFIGURE=1
 
 pushd "${CONFIG_REPO}"
@@ -75,8 +74,6 @@ fi
 
 echo "download package"
 make download -j8 V=s
-
-# find dl -size -1024c -exec ls -l {} \; -exec rm -f {} \;
 
 echo "$(nproc) thread compile"
 make -j$(nproc) V=s || make -j1 V=s

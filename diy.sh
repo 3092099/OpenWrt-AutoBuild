@@ -15,8 +15,8 @@ echo "build_date的值是：${build_date}"
 echo "======================="
 
 # Add a feed source
-sed -i "/helloworld/d" feeds.conf.default
-sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package' feeds.conf.default
+#sed -i "/helloworld/d" feeds.conf.default
+#sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package' feeds.conf.default
 
 # passwall
 rm -rf feeds/luci/applications/luci-app-passwall

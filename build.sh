@@ -88,9 +88,6 @@ fi
 
 pushd bin/targets/*/*
 
-echo "编译成功，原始文件有："
-ls -al
-
 rm -rf packages *.buildinfo *.manifest *.bin sha256sums *rootfs.img profiles.json
 rm -f *.img.gz
 gzip -f *.img

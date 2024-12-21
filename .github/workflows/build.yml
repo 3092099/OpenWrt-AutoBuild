@@ -83,17 +83,6 @@ jobs:
             exit 1
           fi
 
-          #sudo zip -q -r $(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')-${{ env.release }}.zip *.img.gz
-          echo "（build.yml）当前编译的源代码来自：${repo}，固件型号是：${owner};"
-          echo "（build.yml）repo的值是：${repo}"
-          echo "======================="
-          echo "（build.yml）owner的值是：${owner}"
-          echo "======================="
-          echo "（build.yml）build_date的值是：${build_date}"
-          echo "======================="
-          echo "（build.yml）自定义的值是：$(basename "${{ matrix.config }}" .config | awk -F';' '{printf $1"-"$3}')"
-          echo "======================="
-
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v2
         if: success() && !cancelled()

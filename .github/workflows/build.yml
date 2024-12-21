@@ -106,8 +106,6 @@ jobs:
             - 💝 源码分支: master
             - 🚀 内核版本: 6.6
             - 🎈 Lcui版本：23.05
-            - 🌐 默认地址：192.168.18.1
-            - 🔑 默认密码：无密码
             - 🧊 更新时间：${{env.release}}
             https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild
     
@@ -125,7 +123,5 @@ jobs:
              - 💝 源码分支: master
              - 🚀 内核版本: 6.6
              - 🎈 Lcui版本：23.05
-             - 🌐 默认地址：192.168.18.1
-             - 🔑 默认密码：无密码
              - 🧊 更新时间：${{env.release}}
              https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild

@@ -44,7 +44,7 @@ pushd "${CONFIG_REPO}"
 
 git pull
 
-sed -i "src-git gxnas https://github.com/gxnas/openwrt-packages" feeds.conf.default
+sed -i "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

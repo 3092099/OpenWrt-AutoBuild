@@ -6,12 +6,12 @@ repo=${1:-openwrt}
 owner=${2:-Test-Router}
 build_date=$(TZ=Asia/Shanghai date "+%Y.%m.%d")
 
-echo "当前编译的源代码来自：${repo}，固件型号是：${owner};"
-echo "repo的值是：${repo}"
+echo "（diy.sh）当前编译的源代码来自：${repo}，固件型号是：${owner};"
+echo "（diy.sh）repo的值是：${repo}"
 echo "======================="
-echo "owner的值是：${owner}"
+echo "（diy.sh）owner的值是：${owner}"
 echo "======================="
-echo "build_date的值是：${build_date}"
+echo "（diy.sh）build_date的值是：${build_date}"
 echo "======================="
 
 # Add a feed source

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-name: Build OpenWrt
+name: 编译OpenWrt-2305-x64
 
 on:
   #schedule:
@@ -35,6 +35,8 @@ jobs:
     needs: matrix
     env:
       release: ${{ needs.matrix.outputs.release }}
+      TELEGRAM_WORK_PUSH: false
+      WECHAT_WORK_PUSH: true
     strategy:
       matrix: ${{ fromJson(needs.matrix.outputs.matrix) }}
 
@@ -93,6 +95,7 @@ jobs:
           files: /mnt/openwrt/*.img.gz
 
       - name: Telegram notification upload success
+        if: env.TELEGRAM_WORK_PUSH == 'true'
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -109,19 +112,27 @@ jobs:
             - 🧊 更新时间：${{env.release}}
             https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild
     
-      - name: Push notification upload success
-        uses: xhnmt/pushplus-action@main
-        with:
-          token: ${{ secrets.PUSH_PLUS_TOKEN }}
-          title: "${{ matrix.config }} 项目编译完成"
-          content: |
-             ♨️ 【${{ matrix.config }}】项目编译完成 ♨️
-             - ⚽ 固件名称：${{ matrix.config }}
-             - 🔴 固件大小：Kernel=32M，rootfs=968M
-             - 💻 平台架构: x86-64
-             - 🌻 固件源码: https://github.com/coolsnowwolf/lede
-             - 💝 源码分支: master
-             - 🚀 内核版本: 6.6
-             - 🎈 Lcui版本：23.05
-             - 🧊 更新时间：${{env.release}}
-             https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild
+      - name: Enterprise WeChat notification upload success
+        if: env.WECHAT_WORK_PUSH == 'true'
+        run: |
+          curl -X POST "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${{ secrets.WEBHOOK_SEND_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+              "msgtype": "news",
+              "news": {
+                "articles": [
+                  {
+                    "title": "${{ matrix.config }} 项目编译完成",
+                    "description": "- ❀  固件名称：${{ matrix.config }}\n\
+                                    - 🔴 固件大小：Kernel=32M，rootfs=968M\n\
+                                    - 💻 平台架构: x86-64\n\
+                                    - ⚽ 固件源码: https://github.com/coolsnowwolf/lede\n\
+                                    - 💝 源码分支: master\n\
+                                    - 🚀 内核版本: 6.6\n\
+                                    - 🎈 Lcui版本：23.05\n\
+                                    - 🧊 更新时间：${{env.release}}",
+                    "url": "https://github.com/3092099/OpenWrt-AutoBuild/releases/tag/OpenWrt-AutoBuild"
+                  }
+                ]
+              }
+            }'

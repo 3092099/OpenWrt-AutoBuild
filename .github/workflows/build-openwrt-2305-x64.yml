@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-name: 编译OpenWrt-2305-x64
+name: Build-OpenWrt-2305-x64
 
 on:
   #schedule:

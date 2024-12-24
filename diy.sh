@@ -15,11 +15,11 @@ echo "（diy.sh）build_date的值是：${build_date}"
 echo "======================="
 
 # passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+#rm -rf feeds/luci/applications/luci-app-passwall
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
 
 # passwall2
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
+#git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2 package/luci-app-passwall2
 
 # Modify default IP
 if [ "${owner}" = "Full-Router" ]; then

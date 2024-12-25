@@ -46,6 +46,10 @@ git pull
 
 sed -i "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" feeds.conf.default
 
+# passwall
+rm -rf feeds/luci/applications/luci-app-passwall
+merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 ./scripts/feeds uninstall $(grep Package ./feeds/ing.index | awk -F': ' '{print $2}')

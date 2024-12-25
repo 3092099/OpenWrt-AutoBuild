@@ -48,7 +48,8 @@ sed -i "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" feeds
 
 # passwall
 rm -rf feeds/luci/applications/luci-app-passwall
-merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall 
+mv openwrt-passwall/luci-app-passwall feeds/luci/applications/
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

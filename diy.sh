@@ -52,10 +52,10 @@ sed -i "s/DISTRIB_REVISION='R[0-9]\+\.[0-9]\+\.[0-9]\+'/DISTRIB_REVISION='@R$bui
 sed -i "s/LEDE/OpenWrt-2410-x64-${owner} by GXNAS build/g" ${defaultsettings}/files/zzz-default-settings
 
 # Modify the luci-theme-argon
-sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2305_x64 by GXNAS build @R'"$build_date"'/' feeds/luci/applications/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/applications/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/applications/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2305_x64 by GXNAS build @R$build_date|" feeds/luci/applications/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
+sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2305_x64 by GXNAS build @R'"$build_date"'/' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://wp.gxnas.com" target="_blank">🌐固件编译者：【GXNAS博客】</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+sed -i 's|<%= ver.distversion %>|<a href="https://d.gxnas.com" target="_blank">👆点这里下载最新版本</a>|' feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2305_x64 by GXNAS build @R$build_date|" feeds/luci/themes/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
 
 echo "（diy.sh）zzz-default-settings文件修改后的内容是："
 cat ${defaultsettings}/files/zzz-default-settings
@@ -69,7 +69,8 @@ sed -i "s/bootstrap/argon/g" feeds/luci/collections/luci/Makefile
 sed -i "s/bootstrap/argon/g" feeds/luci/modules/luci-base/root/etc/config/luci
 
 echo "（diy.sh）feeds/luci文件下有是："
-ls -Ahl feeds/luci/
+sudo apt install -y tree
+tree feeds/luci/
 echo "=========================================="
 
 # Add kernel build user

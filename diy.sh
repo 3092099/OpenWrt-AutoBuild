@@ -68,9 +68,8 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 sed -i "s/bootstrap/argon/g" feeds/luci/collections/luci/Makefile
 sed -i "s/bootstrap/argon/g" feeds/luci/modules/luci-base/root/etc/config/luci
 
-echo "（diy.sh）feeds/luci文件下有是："
-sudo apt install -y tree
-tree feeds/luci/
+echo "（diy.sh）feeds/luci文件下有："
+ls -lhR feeds/luci/
 echo "=========================================="
 
 # Add kernel build user

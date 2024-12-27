@@ -44,7 +44,7 @@ pushd "${CONFIG_REPO}"
 
 git pull
 
-echo "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" >> feeds.conf.default
+#echo "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" >> feeds.conf.default
 
 # passwall
 rm -rf feeds/luci/applications/luci-app-passwall

@@ -69,13 +69,3 @@ sed -i "s/bootstrap/argon/g" feeds/luci/modules/luci-base/root/etc/config/luci
 [ -z $(grep "CONFIG_KERNEL_BUILD_DOMAIN=" .config) ] &&
   echo 'CONFIG_KERNEL_BUILD_DOMAIN="GitHub Actions"' >>.config ||
   sed -i 's|\(CONFIG_KERNEL_BUILD_DOMAIN=\).*|\1$"GitHub Actions"|' .config
-
-# passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall
-mv openwrt-passwall/luci-app-passwall feeds/luci/applications/
-rm -rf openwrt-passwall
-
-# poweroff
-git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
-mv luci-app-poweroff feeds/luci/applications/

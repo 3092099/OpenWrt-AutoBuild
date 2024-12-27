@@ -46,6 +46,16 @@ git pull
 
 echo "src-git gxnas https://github.com/gxnas/OpenWrt_Build_x64_Packages" >> feeds.conf.default
 
+# passwall
+rm -rf feeds/luci/applications/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall
+mv openwrt-passwall/luci-app-passwall feeds/luci/applications/
+rm -rf openwrt-passwall
+
+# poweroff
+git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
+mv luci-app-poweroff feeds/luci/applications/
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 ./scripts/feeds uninstall $(grep Package ./feeds/ing.index | awk -F': ' '{print $2}')
